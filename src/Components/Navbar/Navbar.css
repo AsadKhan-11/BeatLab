@@ -1,0 +1,12 @@
+.navbar-sec {
+  width: 100vw;
+  height: 70px;
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.nav-icon {
+  color: cadetblue;
+}
