@@ -6,7 +6,6 @@ function Navbar() {
     <>
       <section className="navbar-sec">
         <h2 className="nav-icon">BeatLab</h2>
-        <Song />
       </section>
     </>
   );
