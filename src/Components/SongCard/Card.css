@@ -1,0 +1,5 @@
+.card-sec {
+  display: flex;
+  gap: 180px;
+  padding: 40px;
+}

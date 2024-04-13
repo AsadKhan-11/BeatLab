@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import Song from "../SongCard/Song";
+import Song from "../SongCard/Card";
 function Navbar() {
   return (
     <>
