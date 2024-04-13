@@ -45,11 +45,14 @@
   align-items: center;
   justify-content: center;
   justify-self: center;
+  outline: none;
+  border: none;
+  background-color: rgb(97, 30, 114);
 }
 
 :where(.next-btn, .play-btn, .prev-btn):hover {
-  fill: purple;
-  color: purple;
+  fill: white;
+  box-shadow: 0 0 15px 1px rgb(56, 15, 49);
 }
 
 .control-btns {
