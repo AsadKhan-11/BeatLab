@@ -1,6 +1,6 @@
 .song-card {
   height: 350px;
-  width: 300px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,8 +20,8 @@
   top: 50%;
   backdrop-filter: blur(5px);
   left: 50%;
-  height: 350px;
-  width: 300px;
+  height: 100%;
+  width: 100%;
   transform: translate(-50%, -50%);
   z-index: -1;
   border-radius: 5px;
@@ -30,4 +30,31 @@
 .song-img {
   height: 200px;
   width: 200px;
+  border-radius: 8px;
+}
+
+.next-btn,
+.play-btn,
+.prev-btn {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  fill: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+}
+
+:where(.next-btn, .play-btn, .prev-btn):hover {
+  fill: purple;
+  color: purple;
+}
+
+.control-btns {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
 }
