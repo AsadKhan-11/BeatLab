@@ -1,0 +1,27 @@
+.playing-sec {
+  width: 100%;
+  height: 100px;
+  background-color: blueviolet;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.playing-img {
+  height: 80px;
+  width: 120px;
+  border-radius: 50px;
+}
+
+.playing-box {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.playing-title {
+  font-size: 30px;
+}

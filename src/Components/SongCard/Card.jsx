@@ -8,7 +8,6 @@ function Card() {
     <>
       <section className="card-sec">
         {songs.map((song, index) => {
-          console.log(songs);
           return (
             <div key={index}>
               <Song name={song.name} img={song.img} audio={song.song} />
