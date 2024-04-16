@@ -7,7 +7,7 @@ var red = new Audio("./Song/Songs/Babbu.mp3");
 var friends = new Audio("./Song/Songs/FRIENDS.mp3");
 
 const songs = [
-  { song: "./Song/Songs/ys.mp3", name: "Therapy time", img: image1 },
+  { song: ys, name: "Therapy time", img: image1 },
   { song: red, name: "Red Challenger", img: image2 },
   { song: friends, name: "FRIENDS", img: image3 },
 ];

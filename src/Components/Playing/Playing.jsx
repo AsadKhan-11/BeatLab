@@ -2,27 +2,36 @@ import React, { useRef, useState } from "react";
 import "./Playing.css";
 import songs from "../SongCard/songsData";
 function Playing() {
-  const [currentSong, setCurrentSong] = useState(0);
-  const audRef = useRef(null);
+  const [songPlaying, setSongPlaying] = useState(songs);
+  // const [currentSong, setCurrentSong] = useState(songs[0]);
+  const [isPlaying, setisPlaying] = useState(false);
+  const audRef = useRef();
 
   const play = () => {
-    console.log(audRef.current);
+    console.log(currentSong.song);
     audRef.current.play();
   };
+
+  var aud = document.createElement("audio");
+  aud.id = "audio";
+  let current = 0;
+  let currentSong = songs[current].song;
+  aud.setAttribute("src", currentSong.src);
+  let controls = document.createAttribute("controls");
+  aud.setAttributeNode(controls);
+  console.log(aud);
 
   return (
     <>
       <section className="playing-sec">
-        <audio ref={audRef} preload="auto" controls autoPlay></audio>
-
         <div className="playing-box">
           <img
-            src={songs[currentSong].img}
+            src={currentSong.img}
             alt="Now Playing image"
             className="playing-img"
           />
 
-          <h2 className="playing-title">{songs[currentSong].name}</h2>
+          <h2 className="playing-title">{currentSong.name}</h2>
         </div>
         <div className="control-btns">
           <button className="prev-btn">
