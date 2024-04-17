@@ -1,25 +1,33 @@
 import React, { useRef, useState } from "react";
 import "./Playing.css";
 import songs from "../SongCard/songsData";
-function Playing() {
-  const [songPlaying, setSongPlaying] = useState(songs);
-  // const [currentSong, setCurrentSong] = useState(songs[0]);
-  const [isPlaying, setisPlaying] = useState(false);
-  const audRef = useRef();
 
-  const play = () => {
-    console.log(currentSong.song);
-    audRef.current.play();
+function Playing() {
+  const [current, setCurrent] = useState(0);
+  const [currentSong, setCurrentSong] = useState(songs[current]);
+  const [isPlaying, setisPlaying] = useState(false);
+  const audRef = useRef(currentSong.song);
+
+  const play = (e) => {
+    e.preventDefault();
+    if (isPlaying) {
+      audRef.current.pause();
+    } else {
+      audRef.current.play();
+    }
+    setisPlaying((prev) => !prev);
+    console.log(isPlaying);
   };
 
-  var aud = document.createElement("audio");
-  aud.id = "audio";
-  let current = 0;
-  let currentSong = songs[current].song;
-  aud.setAttribute("src", currentSong.src);
-  let controls = document.createAttribute("controls");
-  aud.setAttributeNode(controls);
-  console.log(aud);
+  const next = (e) => {
+    e.preventDefault();
+    const nextSong = (current + 1) % songs.length;
+    setCurrent(nextSong);
+    setCurrentSong(songs[current]);
+    setisPlaying(true);
+    audRef.current.src = currentSong.song;
+    console.log(audRef.current);
+  };
 
   return (
     <>
@@ -62,7 +70,7 @@ function Playing() {
               />
             </svg>
           </button>
-          <button className="next-btn">
+          <button className="next-btn" onClick={next}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -77,6 +85,7 @@ function Playing() {
             </svg>
           </button>
         </div>
+        <audio ref={audRef} src={currentSong.song} controls />
       </section>
     </>
   );

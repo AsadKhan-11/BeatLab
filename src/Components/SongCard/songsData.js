@@ -1,10 +1,9 @@
 import image1 from "./Song/Pictures/ys.jpg";
 import image2 from "./Song/Pictures/red.jpg";
 import image3 from "./Song/Pictures/marsh.jpg";
-
-var ys = new Audio("./Song/Songs/ys.mp3");
-var red = new Audio("./Song/Songs/Babbu.mp3");
-var friends = new Audio("./Song/Songs/FRIENDS.mp3");
+import ys from "./Song/Songs/ys.mp3";
+import red from "./Song/Songs/Babbu.mp3";
+import friends from "./Song/Songs/FRIENDS.mp3";
 
 const songs = [
   { song: ys, name: "Therapy time", img: image1 },
