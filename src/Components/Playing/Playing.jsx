@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Playing.css";
 import songs from "../SongCard/songsData";
 
@@ -6,29 +6,37 @@ function Playing() {
   const [current, setCurrent] = useState(0);
   const [currentSong, setCurrentSong] = useState(songs[current]);
   const [isPlaying, setisPlaying] = useState(false);
+  console.log(isPlaying);
   const audRef = useRef(currentSong.song);
+  useEffect(() => {
+    setisPlaying(false);
+  }, []);
 
-  const play = (e) => {
-    e.preventDefault();
-    if (isPlaying) {
-      audRef.current.pause();
-    } else {
-      audRef.current.play();
-    }
+  const playSong = () => {
     setisPlaying((prev) => !prev);
-    console.log(isPlaying);
+
+    if (isPlaying) {
+      audRef.current.play();
+    } else {
+      audRef.current.pause();
+    }
   };
 
   const next = (e) => {
-    e.preventDefault();
+    const nextSong = (current + 1) % songs.length;
+    setCurrent(nextSong);
+    setCurrentSong(songs[current]);
+    audRef.current.src = currentSong.song.src;
+    console.log(audRef.current);
+  };
+  const prev = (e) => {
     const nextSong = (current + 1) % songs.length;
     setCurrent(nextSong);
     setCurrentSong(songs[current]);
     setisPlaying(true);
-    audRef.current.src = currentSong.song;
+    audRef.current.src = currentSong.song.src;
     console.log(audRef.current);
   };
-
   return (
     <>
       <section className="playing-sec">
@@ -56,19 +64,36 @@ function Playing() {
               />
             </svg>
           </button>
-          <button className="play-btn" onClick={play}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"
-              />
-            </svg>
+          <button className="play-btn" onClick={playSong}>
+            {isPlaying ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 5.25v13.5m-7.5-13.5v13.5"
+                />
+              </svg>
+            )}
           </button>
           <button className="next-btn" onClick={next}>
             <svg
