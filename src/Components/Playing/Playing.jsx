@@ -4,6 +4,7 @@ import songs from "../SongCard/songsData";
 
 function Playing() {
   const [current, setCurrent] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const [currentSong, setCurrentSong] = useState(songs[current]);
   const [isPlaying, setisPlaying] = useState(false);
   const audRef = useRef(currentSong.song);
@@ -22,19 +23,33 @@ function Playing() {
     setCurrent(nextSong);
     setCurrentSong(songs[nextSong]);
     setisPlaying(true);
-    console.log(audRef.current);
   };
   const prev = () => {
-    const nextSong = ((current - 1) % songs.length) % songs.length;
+    const nextSong = (current - 1 + songs.length) % songs.length;
     setCurrent(nextSong);
     setCurrentSong(songs[nextSong]);
     setisPlaying(true);
     audRef.current.src = currentSong.song.src;
-    console.log(audRef.current);
   };
+  const setTime = () => {
+    setCurrentTime(audRef.current.currentTime);
+  };
+  const sliderChange = (e) => {
+    const seekTime = e.target.value;
+    audRef.current.currentTime = seekTime;
+    setCurrentTime(seekTime);
+  };
+
   return (
     <>
       <section className="playing-sec">
+        <input
+          type="range"
+          min="0"
+          max={audRef.current.duration}
+          value={currentTime}
+          onChange={sliderChange}
+        />
         <div className="playing-box">
           <img
             src={currentSong.img}
@@ -105,7 +120,13 @@ function Playing() {
             </svg>
           </button>
         </div>
-        <audio ref={audRef} src={currentSong.song} controls autoPlay />
+        <audio
+          ref={audRef}
+          src={currentSong.song}
+          autoPlay
+          onTimeUpdate={setTime}
+          onEnded={() => setisPlaying(false)}
+        />
       </section>
     </>
   );
