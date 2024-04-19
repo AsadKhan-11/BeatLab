@@ -6,33 +6,28 @@ function Playing() {
   const [current, setCurrent] = useState(0);
   const [currentSong, setCurrentSong] = useState(songs[current]);
   const [isPlaying, setisPlaying] = useState(false);
-  console.log(isPlaying);
   const audRef = useRef(currentSong.song);
-  useEffect(() => {
-    setisPlaying(false);
-  }, []);
 
   const playSong = () => {
-    setisPlaying((prev) => !prev);
-
-    if (isPlaying) {
+    if (!isPlaying) {
       audRef.current.play();
     } else {
       audRef.current.pause();
     }
+    setisPlaying((prev) => !prev);
   };
 
-  const next = (e) => {
+  const next = () => {
     const nextSong = (current + 1) % songs.length;
     setCurrent(nextSong);
-    setCurrentSong(songs[current]);
-    audRef.current.src = currentSong.song.src;
+    setCurrentSong(songs[nextSong]);
+    setisPlaying(true);
     console.log(audRef.current);
   };
-  const prev = (e) => {
-    const nextSong = (current + 1) % songs.length;
+  const prev = () => {
+    const nextSong = ((current - 1) % songs.length) % songs.length;
     setCurrent(nextSong);
-    setCurrentSong(songs[current]);
+    setCurrentSong(songs[nextSong]);
     setisPlaying(true);
     audRef.current.src = currentSong.song.src;
     console.log(audRef.current);
@@ -50,7 +45,7 @@ function Playing() {
           <h2 className="playing-title">{currentSong.name}</h2>
         </div>
         <div className="control-btns">
-          <button className="prev-btn">
+          <button className="prev-btn" onClick={prev}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -65,7 +60,7 @@ function Playing() {
             </svg>
           </button>
           <button className="play-btn" onClick={playSong}>
-            {isPlaying ? (
+            {!isPlaying ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -110,7 +105,7 @@ function Playing() {
             </svg>
           </button>
         </div>
-        <audio ref={audRef} src={currentSong.song} controls />
+        <audio ref={audRef} src={currentSong.song} controls autoPlay />
       </section>
     </>
   );

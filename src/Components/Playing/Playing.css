@@ -25,3 +25,14 @@
 .playing-title {
   font-size: 30px;
 }
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button svg {
+  height: 30px;
+  width: 30px;
+}
