@@ -3,3 +3,8 @@
   gap: 80px;
   padding: 40px;
 }
+
+.playing-card {
+  background-color: #3776c7;
+  border-radius: 12px;
+}

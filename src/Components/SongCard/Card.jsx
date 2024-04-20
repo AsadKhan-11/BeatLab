@@ -9,7 +9,7 @@ function Card() {
       <section className="card-sec">
         {songs.map((song, index) => {
           return (
-            <div key={index}>
+            <div className="playing-card" key={index}>
               <Song name={song.name} img={song.img} audio={song.song} />
             </div>
           );

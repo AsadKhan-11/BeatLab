@@ -24,7 +24,7 @@
   width: 100%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 
 .song-img {
@@ -47,7 +47,7 @@
   justify-self: center;
   outline: none;
   border: none;
-  background-color: rgb(97, 30, 114);
+  background-color: #8d57ca;
 }
 
 :where(.next-btn, .play-btn, .prev-btn):hover {

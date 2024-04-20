@@ -2,18 +2,24 @@
   width: 100%;
   height: 100px;
   background-color: blueviolet;
-  position: absolute;
-  bottom: 0;
+  position: fixed;
   display: flex;
   align-items: center;
+  bottom: 0;
+}
+
+.playing-container {
+  display: flex;
+
   gap: 200px;
-  padding: 40px;
+  padding: 0 40px;
 }
 
 .playing-img {
-  height: 80px;
-  width: 120px;
-  border-radius: 50px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  animation: linear infinite 8s animation;
 }
 
 .playing-box {
@@ -26,6 +32,25 @@
   font-size: 30px;
 }
 
+.slider {
+  width: 100vw;
+
+  height: 20px;
+  position: absolute;
+  top: -15px;
+  cursor: grab;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 7px rgb(204, 197, 197);
+  background-color: rgb(107, 44, 150);
+  z-index: -1;
+}
+
 button {
   display: flex;
   align-items: center;
@@ -35,4 +60,10 @@ button {
 button svg {
   height: 30px;
   width: 30px;
+}
+
+@keyframes animation {
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
