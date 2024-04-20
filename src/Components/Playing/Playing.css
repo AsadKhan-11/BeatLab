@@ -1,16 +1,17 @@
 .playing-sec {
   width: 100%;
   height: 100px;
-  background-color: blueviolet;
+  background: linear-gradient(to right, #cb6ce6, #3375cc, #004aad);
   position: fixed;
   display: flex;
   align-items: center;
   bottom: 0;
+  z-index: 10;
+  opacity: 0.9;
 }
 
 .playing-container {
   display: flex;
-
   gap: 200px;
   padding: 0 40px;
 }
@@ -26,27 +27,44 @@
   display: flex;
   gap: 20px;
   align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
 }
 
 .playing-title {
   font-size: 30px;
 }
 
+.control-btns {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
 .slider {
   width: 100vw;
-
-  height: 20px;
+  padding: 0 10px;
+  height: 5px;
   position: absolute;
-  top: -15px;
+  top: 0px;
   cursor: grab;
+  -webkit-appearance: none;
+  background-color: #5020a8;
 }
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  box-shadow: 0 0 0 7px rgb(204, 197, 197);
+  box-shadow: 0 0 0 5px rgb(204, 197, 197);
   background-color: rgb(107, 44, 150);
   z-index: -1;
 }

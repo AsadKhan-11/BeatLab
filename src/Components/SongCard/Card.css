@@ -1,10 +1,11 @@
 .card-sec {
   display: flex;
-  gap: 80px;
+  gap: 70px;
   padding: 40px;
+  flex-wrap: wrap;
+  z-index: 1;
 }
 
 .playing-card {
-  background-color: #3776c7;
   border-radius: 12px;
 }

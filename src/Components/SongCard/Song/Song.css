@@ -15,8 +15,9 @@
   content: " ";
 
   background-color: rgb(177, 177, 177);
-  opacity: 0.3;
+  opacity: 0.2;
   position: absolute;
+  box-shadow: 0 0 0px 2px rgb(211, 211, 211);
   top: 50%;
   backdrop-filter: blur(5px);
   left: 50%;
@@ -48,16 +49,11 @@
   outline: none;
   border: none;
   background-color: #8d57ca;
+  transition: all 1s;
+  z-index: 5;
 }
 
 :where(.next-btn, .play-btn, .prev-btn):hover {
   fill: white;
   box-shadow: 0 0 15px 1px rgb(56, 15, 49);
-}
-
-.control-btns {
-  display: flex;
-  gap: 50px;
-  align-items: center;
-  justify-content: center;
 }

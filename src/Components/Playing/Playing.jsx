@@ -7,7 +7,18 @@ function Playing() {
   const [currentTime, setCurrentTime] = useState(0);
   const [currentSong, setCurrentSong] = useState(songs[current]);
   const [isPlaying, setisPlaying] = useState(false);
+  const [duration, setDuration] = useState(0);
   const audRef = useRef(currentSong.song);
+
+  useEffect(() => {
+    if (isPlaying) {
+      audRef.current.play();
+    } else {
+      audRef.current.pause();
+    }
+    setDuration(audRef.current.duration);
+    duration.toString();
+  }, [duration]);
 
   const playSong = () => {
     if (!isPlaying) {
@@ -35,9 +46,15 @@ function Playing() {
     setCurrentTime(audRef.current.currentTime);
   };
   const sliderChange = (e) => {
-    const seekTime = e.target.value;
+    const seekTime = parseFloat(e.target.value);
     audRef.current.currentTime = seekTime;
     setCurrentTime(seekTime);
+
+    if (isPlaying) {
+      audRef.current.play();
+    } else {
+      audRef.current.pause();
+    }
   };
 
   return (
@@ -47,7 +64,7 @@ function Playing() {
           className="slider"
           type="range"
           min="0"
-          max={audRef.current.duration}
+          max={duration}
           value={currentTime}
           onChange={sliderChange}
         />
