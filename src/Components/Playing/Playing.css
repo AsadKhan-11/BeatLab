@@ -68,6 +68,28 @@
   background-color: rgb(107, 44, 150);
   z-index: -1;
 }
+.volume {
+  width: 150px;
+
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  border-radius: 12px;
+  right: 10%;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  -webkit-appearance: none;
+  background-color: rgb(204, 197, 197);
+}
+
+.volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #cb6ce6;
+  z-index: -1;
+}
 
 button {
   display: flex;

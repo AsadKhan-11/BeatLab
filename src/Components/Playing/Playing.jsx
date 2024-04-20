@@ -5,7 +5,9 @@ import songs from "../SongCard/songsData";
 function Playing() {
   const [current, setCurrent] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [currentVolume, setCurrentVolume] = useState(1);
   const [currentSong, setCurrentSong] = useState(songs[current]);
+
   const [isPlaying, setisPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const audRef = useRef(currentSong.song);
@@ -55,6 +57,16 @@ function Playing() {
     } else {
       audRef.current.pause();
     }
+  };
+  const setVolume = () => {
+    setCurrentVolume(audRef.current.volume);
+  };
+
+  const volumeChange = (e) => {
+    const newVolume = parseFloat(e.target.value);
+    audRef.current.volume = newVolume;
+    setVolume(newVolume);
+    console.log(currentVolume);
   };
 
   return (
@@ -147,6 +159,15 @@ function Playing() {
             onEnded={() => setisPlaying(false)}
           />
         </div>
+        <input
+          className="volume"
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          onChange={volumeChange}
+          value={currentVolume}
+        />
       </section>
     </>
   );
