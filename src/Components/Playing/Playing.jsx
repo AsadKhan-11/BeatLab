@@ -12,6 +12,9 @@ function Playing() {
   const [duration, setDuration] = useState(0);
   const audRef = useRef(currentSong.song);
 
+  const minutes = Math.floor(currentTime / 60);
+  const seconds = Math.ceil(currentTime - minutes * 60);
+
   useEffect(() => {
     if (isPlaying) {
       audRef.current.play();
@@ -66,7 +69,6 @@ function Playing() {
     const newVolume = parseFloat(e.target.value);
     audRef.current.volume = newVolume;
     setVolume(newVolume);
-    console.log(currentVolume);
   };
 
   return (
@@ -168,6 +170,9 @@ function Playing() {
           onChange={volumeChange}
           value={currentVolume}
         />
+        <p className="playing-time">
+          {minutes}: {seconds}
+        </p>
       </section>
     </>
   );

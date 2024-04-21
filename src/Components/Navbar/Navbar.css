@@ -1,13 +1,16 @@
 .navbar-sec {
   width: 100vw;
   height: 70px;
-  background-color: antiquewhite;
+  background-color: transparent;
 
   padding: 20px;
 }
 
 .nav-icon {
   text-align: center;
-  color: cadetblue;
-  font-size: 26px;
+  color: rgb(187, 148, 206);
+  font-size: 32px;
+  letter-spacing: 1px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }

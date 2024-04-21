@@ -48,12 +48,12 @@
   justify-self: center;
   outline: none;
   border: none;
-  background-color: #8d57ca;
+  background-color: #b9b9b9;
+  opacity: 0.9;
   transition: all 1s;
   z-index: 5;
 }
 
 :where(.next-btn, .play-btn, .prev-btn):hover {
-  fill: white;
-  box-shadow: 0 0 15px 1px rgb(56, 15, 49);
+  box-shadow: 0 0 15px 1px #422855;
 }
