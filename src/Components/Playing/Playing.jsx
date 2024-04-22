@@ -13,7 +13,9 @@ function Playing() {
   const audRef = useRef(currentSong.song);
 
   const minutes = Math.floor(currentTime / 60);
-  const seconds = Math.ceil(currentTime - minutes * 60);
+  const seconds = Math.floor(currentTime - minutes * 60);
+  const timeMin = String(minutes).padStart(2, "0");
+  const timeSec = String(seconds).padStart(2, "0");
 
   useEffect(() => {
     if (isPlaying) {
@@ -23,7 +25,7 @@ function Playing() {
     }
     setDuration(audRef.current.duration);
     duration.toString();
-  }, [duration]);
+  }, []);
 
   const playSong = () => {
     if (!isPlaying) {
@@ -78,9 +80,10 @@ function Playing() {
           className="slider"
           type="range"
           min="0"
-          max={duration}
+          step="1"
           value={currentTime}
           onChange={sliderChange}
+          max={duration}
         />
         <div className="playing-container">
           <div className="playing-box">
@@ -171,7 +174,7 @@ function Playing() {
           value={currentVolume}
         />
         <p className="playing-time">
-          {minutes}: {seconds}
+          {timeMin}: {timeSec}
         </p>
       </section>
     </>
