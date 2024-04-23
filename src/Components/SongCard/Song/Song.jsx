@@ -1,32 +1,19 @@
 import React from "react";
 import "./Song.css";
-import "../Card";
-import "../songsData";
+import song from "../songsData";
 
-function Song(props) {
-  let current = 0;
-  let currentSong = props.audio;
-
-  var aud = document.createElement("audio");
-  aud.id = "audio";
-  aud.setAttribute("src", currentSong.src);
-
-  const playSong = () => {
-    aud.play();
-    console.log(currentSong.src);
+function Song({ name, img, audio, setSelectedSong }) {
+  const handleClick = () => {
+    setSelectedSong({ name, img, audio });
   };
 
   return (
     <>
       <div className="song-card">
-        <img
-          src={props.img}
-          alt={`Image of ${props.name}`}
-          className="song-img"
-        />
-        <h2 className="song-name">{props.name}</h2>
+        <img src={img} alt={`Image of ${name}`} className="song-img" />
+        <h2 className="song-name">{name}</h2>
 
-        <button className="play-btn" onClick={playSong}>
+        <button className="play-btn" onClick={handleClick}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

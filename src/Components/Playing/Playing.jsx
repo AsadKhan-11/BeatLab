@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Playing.css";
 import songs from "../SongCard/songsData";
 
-function Playing() {
+function Playing({ selectedSong }) {
   const [current, setCurrent] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [currentVolume, setCurrentVolume] = useState(1);
@@ -24,8 +24,13 @@ function Playing() {
       audRef.current.pause();
     }
     setDuration(audRef.current.duration);
+
+    if (selectedSong) {
+      setCurrentSong(selectedSong);
+    }
+
     duration.toString();
-  }, []);
+  }, [current]);
 
   const playSong = () => {
     if (!isPlaying) {
@@ -88,12 +93,14 @@ function Playing() {
         <div className="playing-container">
           <div className="playing-box">
             <img
-              src={currentSong.img}
+              src={selectedSong ? selectedSong.img : currentSong.img}
               alt="Now Playing image"
               className="playing-img"
             />
 
-            <h2 className="playing-title">{currentSong.name}</h2>
+            <h2 className="playing-title">
+              {selectedSong ? selectedSong.name : currentSong.name}
+            </h2>
           </div>
           <div className="control-btns">
             <button className="prev-btn" onClick={prev}>
@@ -158,7 +165,7 @@ function Playing() {
           </div>
           <audio
             ref={audRef}
-            src={currentSong.song}
+            src={selectedSong ? selectedSong.song : currentSong.song}
             autoPlay
             onTimeUpdate={setTime}
             onEnded={() => setisPlaying(false)}

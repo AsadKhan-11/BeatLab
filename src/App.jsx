@@ -5,14 +5,14 @@ import Card from "./Components/SongCard/Card";
 import Playing from "./Components/Playing/Playing";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [selectedSong, setSelectedSong] = useState(null);
 
   return (
     <>
       <section className="complete-container">
         <Navbar />
-        <Card />
-        <Playing />
+        <Card setSelectedSong={setSelectedSong} />
+        <Playing selectedSong={selectedSong} />
       </section>
     </>
   );
