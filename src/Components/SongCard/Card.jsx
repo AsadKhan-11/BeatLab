@@ -3,7 +3,7 @@ import "./Card.css";
 import Song from "./Song/Song";
 import songs from "./songsData";
 
-function Card({ setSelectedSong }) {
+function Card({ setSelectedSong, setCurrentSong }) {
   return (
     <>
       <section className="card-sec">
@@ -15,6 +15,7 @@ function Card({ setSelectedSong }) {
                 img={song.img}
                 audio={song.song}
                 setSelectedSong={setSelectedSong}
+                setCurrentSong={setCurrentSong}
               />
             </div>
           );

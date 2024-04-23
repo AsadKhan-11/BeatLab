@@ -2,35 +2,36 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Playing.css";
 import songs from "../SongCard/songsData";
 
-function Playing({ selectedSong }) {
+function Playing({
+  selectedSong,
+  currentSong,
+  setCurrentSong,
+  setSelectedSong,
+}) {
   const [current, setCurrent] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [currentVolume, setCurrentVolume] = useState(1);
-  const [currentSong, setCurrentSong] = useState(songs[current]);
 
   const [isPlaying, setisPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
-  const audRef = useRef(currentSong.song);
 
   const minutes = Math.floor(currentTime / 60);
   const seconds = Math.floor(currentTime - minutes * 60);
   const timeMin = String(minutes).padStart(2, "0");
   const timeSec = String(seconds).padStart(2, "0");
 
+  const audRef = useRef(selectedSong.song);
   useEffect(() => {
     if (isPlaying) {
       audRef.current.play();
+      console.log(selectedSong);
     } else {
       audRef.current.pause();
     }
+    audRef.current.src = selectedSong.song;
     setDuration(audRef.current.duration);
-
-    if (selectedSong) {
-      setCurrentSong(selectedSong);
-    }
-
     duration.toString();
-  }, [current]);
+  }, [selectedSong]);
 
   const playSong = () => {
     if (!isPlaying) {
@@ -44,18 +45,20 @@ function Playing({ selectedSong }) {
   const next = () => {
     const nextSong = (current + 1) % songs.length;
     setCurrent(nextSong);
-    setCurrentSong(songs[nextSong]);
+    setSelectedSong(songs[nextSong]);
     setisPlaying(true);
+    audRef.current.src = selectedSong.song.src;
   };
   const prev = () => {
     const nextSong = (current - 1 + songs.length) % songs.length;
     setCurrent(nextSong);
-    setCurrentSong(songs[nextSong]);
+    setSelectedSong(songs[nextSong]);
     setisPlaying(true);
-    audRef.current.src = currentSong.song.src;
+    audRef.current.src = selectedSong.song.src;
   };
   const setTime = () => {
     setCurrentTime(audRef.current.currentTime);
+    setDuration(audRef.current.duration);
   };
   const sliderChange = (e) => {
     const seekTime = parseFloat(e.target.value);
@@ -93,14 +96,12 @@ function Playing({ selectedSong }) {
         <div className="playing-container">
           <div className="playing-box">
             <img
-              src={selectedSong ? selectedSong.img : currentSong.img}
+              src={selectedSong.img}
               alt="Now Playing image"
               className="playing-img"
             />
 
-            <h2 className="playing-title">
-              {selectedSong ? selectedSong.name : currentSong.name}
-            </h2>
+            <h2 className="playing-title">{selectedSong.name}</h2>
           </div>
           <div className="control-btns">
             <button className="prev-btn" onClick={prev}>
@@ -165,7 +166,7 @@ function Playing({ selectedSong }) {
           </div>
           <audio
             ref={audRef}
-            src={selectedSong ? selectedSong.song : currentSong.song}
+            src={selectedSong.song}
             autoPlay
             onTimeUpdate={setTime}
             onEnded={() => setisPlaying(false)}
