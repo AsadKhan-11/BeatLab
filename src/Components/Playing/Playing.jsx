@@ -2,12 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Playing.css";
 import songs from "../SongCard/songsData";
 
-function Playing({
-  selectedSong,
-  currentSong,
-  setCurrentSong,
-  setSelectedSong,
-}) {
+function Playing({ selectedSong, setSelectedSong }) {
   const [current, setCurrent] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [currentVolume, setCurrentVolume] = useState(1);
@@ -22,22 +17,24 @@ function Playing({
 
   const audRef = useRef(selectedSong.song);
   useEffect(() => {
+    const audioElement = audRef.current;
+    audioElement.src = selectedSong.song;
+    console.log(selectedSong);
     if (isPlaying) {
-      audRef.current.play();
-      console.log(selectedSong);
+      audioElement.play();
     } else {
-      audRef.current.pause();
+      audioElement.pause();
     }
-    audRef.current.src = selectedSong.song;
     setDuration(audRef.current.duration);
     duration.toString();
   }, [selectedSong]);
 
   const playSong = () => {
+    const audioElement = audRef.current;
     if (!isPlaying) {
-      audRef.current.play();
+      audioElement.play();
     } else {
-      audRef.current.pause();
+      audioElement.pause();
     }
     setisPlaying((prev) => !prev);
   };
@@ -47,14 +44,14 @@ function Playing({
     setCurrent(nextSong);
     setSelectedSong(songs[nextSong]);
     setisPlaying(true);
-    audRef.current.src = selectedSong.song.src;
+    audRef.current.src = selectedSong.song;
   };
   const prev = () => {
     const nextSong = (current - 1 + songs.length) % songs.length;
     setCurrent(nextSong);
     setSelectedSong(songs[nextSong]);
     setisPlaying(true);
-    audRef.current.src = selectedSong.song.src;
+    audRef.current.src = selectedSong.song;
   };
   const setTime = () => {
     setCurrentTime(audRef.current.currentTime);

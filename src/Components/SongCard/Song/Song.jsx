@@ -1,19 +1,17 @@
 import React from "react";
 import "./Song.css";
-import song from "../songsData";
 
-function Song({ name, img, audio, setSelectedSong }) {
+function Song({ name, img, audio, onClick }) {
   const handleClick = () => {
-    setSelectedSong({ name, img, audio });
+    onClick();
   };
-
   return (
     <>
-      <div className="song-card">
+      <div className="song-card" onClick={handleClick}>
         <img src={img} alt={`Image of ${name}`} className="song-img" />
         <h2 className="song-name">{name}</h2>
 
-        <button className="play-btn" onClick={handleClick}>
+        <button className="play-btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

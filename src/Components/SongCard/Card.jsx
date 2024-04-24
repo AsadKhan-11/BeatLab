@@ -3,7 +3,11 @@ import "./Card.css";
 import Song from "./Song/Song";
 import songs from "./songsData";
 
-function Card({ setSelectedSong, setCurrentSong }) {
+function Card({ setSelectedSong }) {
+  const handleSong = (song) => {
+    setSelectedSong(song);
+    console.log("1");
+  };
   return (
     <>
       <section className="card-sec">
@@ -14,8 +18,7 @@ function Card({ setSelectedSong, setCurrentSong }) {
                 name={song.name}
                 img={song.img}
                 audio={song.song}
-                setSelectedSong={setSelectedSong}
-                setCurrentSong={setCurrentSong}
+                onClick={() => handleSong(song)}
               />
             </div>
           );
