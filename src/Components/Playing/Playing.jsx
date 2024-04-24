@@ -3,7 +3,6 @@ import "./Playing.css";
 import songs from "../SongCard/songsData";
 
 function Playing({ selectedSong, setSelectedSong }) {
-  const [current, setCurrent] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [currentVolume, setCurrentVolume] = useState(1);
 
@@ -19,7 +18,7 @@ function Playing({ selectedSong, setSelectedSong }) {
   useEffect(() => {
     const audioElement = audRef.current;
     audioElement.src = selectedSong.song;
-    console.log(selectedSong);
+
     if (isPlaying) {
       audioElement.play();
     } else {
@@ -40,15 +39,14 @@ function Playing({ selectedSong, setSelectedSong }) {
   };
 
   const next = () => {
-    const nextSong = (current + 1) % songs.length;
-    setCurrent(nextSong);
+    const nextSong = (songs.indexOf(selectedSong) + 1) % songs.length;
     setSelectedSong(songs[nextSong]);
     setisPlaying(true);
     audRef.current.src = selectedSong.song;
   };
   const prev = () => {
-    const nextSong = (current - 1 + songs.length) % songs.length;
-    setCurrent(nextSong);
+    const nextSong =
+      (songs.indexOf(selectedSong) - 1 + songs.length) % songs.length;
     setSelectedSong(songs[nextSong]);
     setisPlaying(true);
     audRef.current.src = selectedSong.song;

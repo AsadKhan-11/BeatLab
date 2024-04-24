@@ -6,7 +6,6 @@ import songs from "./songsData";
 function Card({ setSelectedSong }) {
   const handleSong = (song) => {
     setSelectedSong(song);
-    console.log("1");
   };
   return (
     <>
