@@ -9,8 +9,13 @@
   z-index: 1;
   gap: 30px;
   padding: 10px 0;
+  cursor: pointer;
 }
 
+.song-card:hover {
+  transform: translateY(-12px);
+  transition: all 1s;
+}
 .song-card::before {
   content: " ";
 
@@ -32,6 +37,7 @@
   height: 200px;
   width: 200px;
   border-radius: 8px;
+  opacity: 0.9;
 }
 
 .next-btn,
