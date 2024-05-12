@@ -34,7 +34,7 @@ const songs = [
   { song: ys, name: "Therapy time", img: image1 },
   { song: miAmor, name: "Mi Amor", img: image4 },
   { song: rockabye, name: "Rockabye", img: image5 },
-  { song: Whynot, name: "Why not meri jaan", img: image8 },
+  { song: Whynot, name: "Why not", img: image8 },
   { song: WithYou, name: "With You", img: image10 },
   { song: red, name: "Red Challenger", img: image2 },
 ];
