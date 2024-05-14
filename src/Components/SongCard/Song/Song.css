@@ -61,14 +61,14 @@
 }
 @media (max-width: 600px) {
   .song-card {
-    height: 270px;
-    width: 170px;
+    height: 280px;
+    width: 200px;
     gap: 25px;
   }
 
   .song-img {
-    height: 140px;
-    width: 140px;
+    height: 150px;
+    width: 150px;
     border-radius: 8px;
     opacity: 0.9;
   }
@@ -96,6 +96,7 @@
   z-index: 1;
   padding: 10px 0;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .song-card:hover {
