@@ -1,4 +1,5 @@
-# BeatLab
+# <h1 align="center">BeatLab </h1>
+![beatlab](https://github.com/AsadKhan-11/BeatLab/assets/150323120/e2c5b8f7-6c62-4d96-885c-9f3e7edf0d43)
 
 
 ## Introduction
