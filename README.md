@@ -1,8 +1,30 @@
-# React + Vite
+# BeatLab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Discover, play, and enjoy your favorite tunes with My Music App, a sleek and intuitive music streaming application built with React. With a user-friendly interface, seamless navigation, and a vast library of songs, My Music App offers an immersive musical experience for all music lovers.
+
+## Technologies
+
+- React.js
+
+## Setup
+
+## Clone the repository:
+
+```html
+git@github.com:AsadKhan-11/BeatLab.git
+```
+
+## Install Dependencies
+```html
+
+npm install
+```
+## Start the Server
+```html
+
+npm run dev
+```
+
